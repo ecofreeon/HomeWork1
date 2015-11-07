@@ -1,0 +1,5 @@
+C:\Users\ecofr\Documents\Visual Studio 2015\Projects\MITA.HomeWork1\Class_Cat\bin\Debug\Class_Cat.dll
+C:\Users\ecofr\Documents\Visual Studio 2015\Projects\MITA.HomeWork1\Class_Cat\bin\Debug\Class_Cat.pdb
+C:\Users\ecofr\Documents\Visual Studio 2015\Projects\MITA.HomeWork1\Class_Cat\obj\Debug\Class_Cat.csprojResolveAssemblyReference.cache
+C:\Users\ecofr\Documents\Visual Studio 2015\Projects\MITA.HomeWork1\Class_Cat\obj\Debug\Class_Cat.dll
+C:\Users\ecofr\Documents\Visual Studio 2015\Projects\MITA.HomeWork1\Class_Cat\obj\Debug\Class_Cat.pdb
