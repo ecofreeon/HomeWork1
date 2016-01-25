@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Class_Cat
 {
-    public class CatClass
+    public class Cat
     {
          private string _name;
         private int _health;
