@@ -60,7 +60,6 @@ namespace Class_Cat
 
         public void Punish()
         {
-            //if (_health > 0)
                 _health--;
         }
 
