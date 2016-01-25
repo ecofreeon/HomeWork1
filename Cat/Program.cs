@@ -11,66 +11,120 @@ namespace Cat
     {
         static void Main(string[] args)
         {
-            var cat = new CatClass();
-            cat.ChangeCatColor();
-            int a;
-
-            Console.WriteLine("Введит возраст кошки");
-            Console.Write("Возраст кошки = ");
-            cat.CatAge = int.Parse(Console.ReadLine());
-            Console.WriteLine();
-
-            bool access = false;
-
-            do
+            int menu;
+            int age;
+            int submenu = 4;
+            Console.WriteLine("\n1 - купить кота");
+            menu = Convert.ToInt32(Console.ReadLine());
+            Console.Clear();
+            while (true)
             {
-                Console.Clear();
-                Console.Write("Имя кошки - ");
-                Console.WriteLine(cat.Name);
-                Console.Write("Возраст кошки - ");
-                Console.WriteLine(cat.CatAge);
-                Console.Write("Цвет кошки - ");
-                Console.WriteLine(cat.CurrentColor);
-
-                Console.WriteLine("Выберите пункт меню:");
-                Console.WriteLine("1.Задать имя кошки\n2.Задать здоровый цвет кошки\n3.Задать больной цывет кошки\n4.Кормить\n5.Бить\n0.Выйти из меню");
-                a = int.Parse(Console.ReadLine());
-                int b;
-                switch (a)
+                switch (menu)
                 {
                     case 1:
-                        Console.Write("Введите имя кошки\n");
-                        Console.Write("Имя кошки - ");
-                        cat.Name = Console.ReadLine();
-                        break;
-                    case 2:
-                        Console.Write("Введите здоровый цвет кошки\n");
-                        Console.Write("Здоровый цвет кошки - ");
-                        cat.colors.HealthyColor = Console.ReadLine();
-                        break;
-                    case 3:
-                        Console.Write("Введите больной цвет кошки\n");
-                        Console.Write("Больной цвет кошки - ");
-                        cat.colors.SickColor = Console.ReadLine();
-                        break;
-                    case 4:
-                        Console.Write("На сколько покромить кошку?\nЕды = ");
-                        b = int.Parse(Console.ReadLine());
-                        cat.Feed(b);
-                        break;
-                    case 5:
-                        Console.Write("На сколько бить кошку?\nУдары = ");
-                        b = int.Parse(Console.ReadLine());
-                        cat.Punish(b);
-                        break;
-                    case 0:
-                        Console.Clear();
-                        access = true;
+
+                        Console.WriteLine("\nустановить возраст");
+                        Console.WriteLine("\nустановить возраст иожно лишь единожды");
+                        age = Convert.ToInt32(Console.ReadLine());
+                        if (age == 0)
+                        {
+                            Console.Clear();
+                            Console.WriteLine(" возраст кота не может быть 0");
+                        }
+                        else
+                        {
+
+                            var cat1 = new Cat(age, 5, "зеленый", "белый");
+                            while (menu != 0)
+                            {
+
+                                Console.Clear();
+                                if (string.IsNullOrEmpty(cat1.Name) == false)
+                                    Console.WriteLine(string.Format("\nимя кота " + cat1.Name));
+                                Console.WriteLine(string.Format("cat's age is " + cat1.Age));
+                                if (string.IsNullOrEmpty(cat1.CurrentColor) == false)
+                                    Console.WriteLine(string.Format("текущий цвет кота " + cat1.CurrentColor));
+                                Console.WriteLine("................................................................");
+                                Console.WriteLine("1 - установить имя ");
+                                Console.WriteLine("2 - установить цвет ");
+                                Console.WriteLine("3 - бить ");
+                                Console.WriteLine("4 - кормить ");
+                                menu = Convert.ToInt32(Console.ReadLine());
+                                switch (menu)
+                                {
+                                    case 1:
+                                        Console.Clear();
+                                        Console.WriteLine("установить имя кота");
+                                        Console.WriteLine("\nвы можете установить имя кота лишь единожды");
+                                        if (string.IsNullOrEmpty(cat1.Name) == true)
+                                            cat1.Name = Console.ReadLine();
+                                        else
+                                        {
+                                            while (submenu != 0)
+                                            {
+                                                Console.Clear();
+                                                Console.WriteLine("имя кота уже установлено");
+                                                Console.WriteLine("0 для выхода");
+                                                submenu = Convert.ToInt32(Console.ReadLine());
+                                            }
+                                            submenu = 4;
+                                        }
+                                        break;
+                                    case 2:
+                                        submenu = 4;
+                                        while (submenu != 0)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("1 -установить здоровый цвет");
+                                            Console.WriteLine("2 - установить больной цвет");
+                                            Console.WriteLine("0 - выход");
+                                            submenu = Convert.ToInt32(Console.ReadLine());
+                                            switch (submenu)
+                                            {
+                                                case 1:
+                                                    cat1.Color.HealthyColor = Console.ReadLine();
+                                                    break;
+                                                case 2:
+                                                    cat1.Color.SickColor = Console.ReadLine();
+                                                    break;
+
+                                                case 0:
+                                                    break;
+                                            }
+                                        }
+                                        submenu = 4;
+                                        break;
+
+                                    case 3:
+                                        while (submenu != 0)
+                                        {
+                                           
+                                            Console.Clear();
+                                            cat1.Punish();
+                                            Console.WriteLine("0 для выхода);
+                                            submenu = Convert.ToInt32(Console.ReadLine());
+                                            break;
+                                      
+                                        }
+                                        submenu = 4;
+                                        break;
+
+                                    case 4:
+                                        while (submenu != 0)
+                                        {
+                                            Console.Clear();
+                                            cat1.Feed();
+                                            Console.WriteLine("0 для выхода");
+                                            submenu = Convert.ToInt32(Console.ReadLine());
+                                        }
+                                        submenu = 4;
+                                        break;
+                                }
+                            }
+                        }
                         break;
                 }
-            } while (!access);
-            Console.WriteLine("Вы вышли из меню, для закрытия программы нажмите любую клавишу.");
-            Console.ReadKey();
+            }
         }
     }
 }
