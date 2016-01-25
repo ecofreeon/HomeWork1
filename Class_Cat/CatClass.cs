@@ -10,23 +10,20 @@ namespace Class_Cat
 {
     public class CatClass
     {
-        private string _name;
-        private  int? _age;
-        public string Color { get; set; } 
-        private int _health = 5;
-        public int? CatAge
+         private string _name;
+        private int _health;
+        private string _currentColor;
+        
+        public Cat(int age, int health, string sickColor, string healthyColor)
         {
-            get { return _age; }
-            set
-            {
-                if (_age == null)
-                {
-                    _age = value;
-                }
-            }
+            Color.HealthyColor = healthyColor;
+            Color.SickColor = sickColor;
+            Age = age;
+            _health = health; 
         }
+        public int Age { get; private set; }
 
-       public CatColors colors = new CatColors();
+        public CatColor Color { get; set; } = new CatColor();
 
         public string Name
         {
@@ -34,56 +31,45 @@ namespace Class_Cat
             set
             {
                 if (string.IsNullOrEmpty(_name))
-                {
                     _name = value;
-                }
             }
         }
-
         public string CurrentColor
         {
             get
             {
                 if (_health >= 5)
-                    return colors.HealthyColor;
+                {
+                    _currentColor = Color.HealthyColor;
+                    return _currentColor;
+                }
                 else
                 {
-                    return colors.SickColor;
+                    _currentColor = Color.SickColor;
+                    return _currentColor;
                 }
+                
             }
         }
 
-        public void ChangeCatColor()
+
+        public void Feed()
         {
-            if (_health < 5)
-            {
-                Color = colors.SickColor;
-            }
-            if (_health >= 5)
-            {
-                Color = colors.HealthyColor;
-            }
-            
+            _health++;   
         }
 
-        public void Feed(int n)
+        public void Punish()
         {
-            _health = _health + n;
-            ChangeCatColor();
+            //if (_health > 0)
+                _health--;
         }
 
-        public void Punish(int h)
+        public class CatColor
         {
-            _health = _health - h;
-            ChangeCatColor();
+            public string HealthyColor { get; set; }
+
+            public string SickColor { get; set; }
         }
-    }
-
-    public class CatColors
-    {
-        public string HealthyColor { get; set; } = "Белый";
-
-        public string SickColor { get; set; } = "Зеленый";
     }
 
 }
